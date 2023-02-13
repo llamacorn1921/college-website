@@ -4,18 +4,25 @@ on:
   push:
     branches:
       - dev
+    paths-ignore:
+      - 'README.md'
 jobs:
   Uglify-Files:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Auto Minify
-      uses: nizarmah/auto-minify@v2.1
-      with:
-        overwrite: true
-    
-    - name: Auto commit
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: "Github Action: Auto Minified JS and CSS files"
-        branch: final
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+      
+      - name: minify
+        uses: nizarmah/auto-minify@v2.1
+        with:
+          overwrite: true
+          directory: 'scripts'
+          output: 'scripts'
+      
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Minify action'
+          branch: final
