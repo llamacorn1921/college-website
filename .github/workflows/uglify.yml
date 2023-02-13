@@ -26,7 +26,8 @@ jobs:
         with:
           branch: final
           files: |
-            *.html
+            index.html
+            ./pages/**
             ./dist/**
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # - uses: stefanzweifel/git-auto-commit-action@v4
