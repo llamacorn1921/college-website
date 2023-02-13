@@ -19,7 +19,7 @@ jobs:
         uses: nizarmah/auto-minify@v2.1
         with:
           overwrite: true
-          directory: 'scripts/source'
+          directory: 'scripts'
           output: 'dist'
       
       # - uses: stefanzweifel/git-auto-commit-action@v4
